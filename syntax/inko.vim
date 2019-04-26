@@ -15,7 +15,7 @@ syn match inkoInstanceVariable "@\%(\h\|[^\x00-\x7F]\)\%(\w\|[^\x00-\x7F]\)*"
 syn match inkoIdentifier "\<[_[:lower:]][_[:alnum:]]*[?!=]\="
 
 syn match inkoKeywordArgument "\(var \|let \)\@<!\%(\h\|[^\x00-\x7F]\)\%(\w\|[^\x00-\x7F]\)*:[^:]"
-syn match InkoConstant "\%(\%(^\|[^.]\)\.\s*\)\@<!\<\u\%(\w\|[^\x00-\x7F]\)*\>\%(\s*(\)\@!"
+syn match inkoConstant "\%(\%(^\|[^.]\)\.\s*\)\@<!\<\u\%(\w\|[^\x00-\x7F]\)*\>\%(\s*(\)\@!"
 
 " Numbers
 syn match inkoNumber "\d\+\([\._]\d\+\)*\([eE]+\d\+\)\?"
