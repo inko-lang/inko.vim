@@ -41,11 +41,11 @@ syn match inkoReturns "->"
 syn match inkoTry 'try!\?'
 
 " Basic Markdown support for doc comments.
-syn region inkoCommentCode start="#\(!\|#\)\s\{5\}\zs" end="$" contained oneline keepend contains=TOP oneline
+syn region inkoCommentCode start="#\s\{5\}\zs" end="$" contained oneline keepend contains=TOP oneline
 syn region inkoCommentBold start="\*\*" end="\*\*" contained oneline
 syn region inkoCommentItalic start="_" end="_" contained keepend oneline
-syn region inkoCommentTitle start="#\(!\|#\)\s\+\zs#\+" end="$" contained oneline
-syn region inkoCommentListDelimiter start="#\(!\|#\)\s*\zs\(\*\|\d.\)" end="\s" contained oneline
+syn region inkoCommentTitle start="#\s\+\zs#\+" end="$" contained oneline
+syn region inkoCommentListDelimiter start="#\s*\zs\(\*\|\d.\)" end="\s" contained oneline
 syn region inkoCommentInlineUrl matchgroup=inkoCommentInlineUrlDelimiter start="<" end=">" contained keepend
 syn region inkoCommentInlineCode start="`" end="`" keepend oneline contained contains=TOP
 
@@ -55,9 +55,7 @@ syn cluster inkoCommentMarkup add=inkoCommentListDelimiter,inkoCommentInlineUrl
 syn cluster inkoCommentMarkup add=inkoCommentInlineCode
 
 " Comments
-syn region inkoComment start="#" end="$" contains=@Spell
-syn region inkoModuleDocComment start="#!" end="$" contains=@Spell,@inkoCommentMarkup keepend
-syn region inkoDocComment start="##" end="$" contains=@Spell,@inkoCommentMarkup keepend
+syn region inkoComment start="#" end="$" contains=@Spell,@inkoCommentMarkup keepend
 
 hi def link inkoDot Normal
 hi def link inkoNamespaceSeparator Normal
