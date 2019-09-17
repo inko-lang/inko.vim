@@ -5,7 +5,7 @@ function! inko#Fold()
         return '-1'
     endif
 
-    if line =~? '^\s*#\(!\|#\).*$'
+    if line =~? '^\s*#.*$'
         return '1'
     endif
 

@@ -11,7 +11,7 @@ augroup inko.vim
 
     setlocal sts=2 sw=2 ts=2
     setlocal matchpairs-=<:>
-    setlocal comments=:#!,:##,:#
+    setlocal comments=:#
     setlocal commentstring=#\ %s
     setlocal formatoptions=jcroql
 
