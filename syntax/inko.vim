@@ -6,6 +6,8 @@ end
 
 let b:current_syntax = "inko"
 
+set iskeyword+=?
+
 syn keyword inkoKeyword object import trait let mut return self throw else
 syn keyword inkoKeyword impl for as do lambda where static
 syn keyword inkoSpecialConstant Self Dynamic
