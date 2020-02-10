@@ -33,7 +33,7 @@ syn match inkoMethodName "[^( -!{]\+" contained
 
 " Literals
 syn match inkoDelimiters "[\[\]{}.,()=_]"
-syn match inkoOperators "[-+\*^%!/<>&|?]"
+syn match inkoOperators "[-+\*^%!/<>&|?~]"
 
 " Generic characters
 syn match inkoNamespaceSeparator "::"
