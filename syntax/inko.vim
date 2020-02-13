@@ -16,7 +16,7 @@ syn keyword inkoSpecialConstant Self Dynamic
 syn match inkoInstanceVariable "@\%(\h\|[^\x00-\x7F]\)\%(\w\|[^\x00-\x7F]\)*"
 syn match inkoIdentifier "\<[_[:lower:]][_[:alnum:]]*[?!=]\="
 
-syn match inkoKeywordArgument "\(var \|let \)\@<!\%(\h\|[^\x00-\x7F]\)\%(\w\|[^\x00-\x7F]\)*:[^:]"
+syn match inkoKeywordArgument "\(var \|let \|let mut \)\@<!\%(\h\|[^\x00-\x7F]\)\%(\w\|[^\x00-\x7F]\)*:[^:]"
 syn match inkoConstant "\%(\%(^\|[^.]\)\.\s*\)\@<!\<\u\%(\w\|[^\x00-\x7F]\)*\>\%(\s*(\)\@!"
 
 " Numbers
