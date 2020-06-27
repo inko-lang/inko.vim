@@ -15,9 +15,8 @@ syn keyword inkoSpecialConstant Self Dynamic
 " Variables/identifiers
 syn match inkoInstanceVariable "@\%(\h\|[^\x00-\x7F]\)\%(\w\|[^\x00-\x7F]\)*"
 syn match inkoIdentifier "\<[_[:lower:]][_[:alnum:]]*[?!=]\="
-
-syn match inkoKeywordArgument "\(var \|let \|let mut \)\@<!\%(\h\|[^\x00-\x7F]\)\%(\w\|[^\x00-\x7F]\)*:[^:]"
 syn match inkoConstant "\%(\%(^\|[^.]\)\.\s*\)\@<!\<\u\%(\w\|[^\x00-\x7F]\)*\>\%(\s*(\)\@!"
+syn match inkoKeywordArgument "\(let \|let mut \)\@<!\%(\h\|[^\x00-\x7F]\)\%(\w\|[^\x00-\x7F]\)*:[^:]"
 
 " Numbers
 syn match inkoNumber "\d\+\([\._]\d\+\)*\([eE]+\d\+\)\?"
@@ -29,7 +28,11 @@ syn region inkoSingleString matchgroup=inkoSingleStringDelimiter start="'" end="
 
 " Method definitions
 syn keyword inkoKeyword def nextgroup=inkoMethodName skipwhite skipempty
-syn match inkoMethodName "[^( -!{]\+" contained
+syn match inkoMethodName "[^( -!{]\+" contained nextgroup=inkoMethodArguments
+
+" Don't highlight arguments such as `foo: Integer` in method definitions. This
+" ensures that both required and optional arguments use the same colors.
+syn region inkoMethodArguments start="(" end=")" contains=TOP,inkoKeywordArgument keepend
 
 " Literals
 syn match inkoDelimiters "[\[\]{}.,()=_]"
