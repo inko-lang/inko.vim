@@ -75,7 +75,7 @@ hi def link inkoMethodName Function
 hi def link inkoIdentifier Identifier
 hi def link inkoThrows Keyword
 hi def link inkoReturns Keyword
-hi def link inkoKeywordArgument Regexp
+hi def link inkoKeywordArgument Normal
 hi def link inkoConstant Constant
 hi def link inkoSpecialConstant Keyword
 hi def link inkoCommentCode Comment
