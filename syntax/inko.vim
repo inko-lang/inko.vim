@@ -70,7 +70,7 @@ hi def link inkoHex Number
 hi def link inkoString String
 hi def link inkoDoubleString inkoString
 hi def link inkoSingleString inkoString
-hi def link inkoInstanceVariable Directory
+hi def link inkoInstanceVariable Identifier
 hi def link inkoMethodName Function
 hi def link inkoIdentifier Identifier
 hi def link inkoThrows Keyword
