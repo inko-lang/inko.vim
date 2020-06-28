@@ -9,7 +9,7 @@ let b:current_syntax = "inko"
 set iskeyword+=?
 
 syn keyword inkoKeyword object import trait let mut return self throw else
-syn keyword inkoKeyword impl for as do lambda when static match
+syn keyword inkoKeyword impl for as when static match
 syn keyword inkoSpecialConstant Self Dynamic
 
 " Variables/identifiers
@@ -26,13 +26,21 @@ syn match inkoHex "0[xX][0-9a-fA-F]\+"
 syn region inkoDoubleString matchgroup=inkoDoubleStringDelimiter start="\"" end="\"" skip="\\\\\|\\\""
 syn region inkoSingleString matchgroup=inkoSingleStringDelimiter start="'" end="'" skip="\\\\\|\\\'"
 
-" Method definitions
+" Method, closure, and lambda definitions
 syn keyword inkoKeyword def nextgroup=inkoMethodName skipwhite skipempty
-syn match inkoMethodName "[^( -!{]\+" contained nextgroup=inkoMethodArguments
+syn match inkoMethodName "[^( -!{]\+" contained nextgroup=inkoBlockTypeParameters
+
+syn keyword inkoKeyword do nextgroup=inkoBlockTypeParameters skipwhite skipempty
+syn keyword inkoKeyword lambda nextgroup=inkoBlockTypeParameters
+  \ skipwhite skipempty
 
 " Don't highlight arguments such as `foo: Integer` in method definitions. This
 " ensures that both required and optional arguments use the same colors.
-syn region inkoMethodArguments start="(" end=")" contains=TOP,inkoKeywordArgument keepend
+syn region inkoBlockTypeParameters start="!(" end=")"
+  \ contains=TOP,inkoKeywordArgument nextgroup=inkoBlockArguments keepend
+
+syn region inkoBlockArguments start="(" end=")"
+  \ contains=TOP,inkoKeywordArgument keepend
 
 " Literals
 syn match inkoDelimiters "[\[\]{}.,()=_]"
