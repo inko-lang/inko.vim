@@ -28,19 +28,21 @@ syn region inkoSingleString matchgroup=inkoSingleStringDelimiter start="'" end="
 
 " Method, closure, and lambda definitions
 syn keyword inkoKeyword def nextgroup=inkoMethodName skipwhite skipempty
-syn match inkoMethodName "[^( -!{]\+" contained nextgroup=inkoBlockTypeParameters
+syn match inkoMethodName "[^( -!{]\+" contained nextgroup=@inkoBlockSignature
 
-syn keyword inkoKeyword do nextgroup=inkoBlockTypeParameters skipwhite skipempty
-syn keyword inkoKeyword lambda nextgroup=inkoBlockTypeParameters
-  \ skipwhite skipempty
+syn keyword inkoKeyword do nextgroup=@inkoBlockSignature skipwhite skipempty
+syn keyword inkoKeyword lambda nextgroup=@inkoBlockSignature skipwhite skipempty
 
 " Don't highlight arguments such as `foo: Integer` in method definitions. This
 " ensures that both required and optional arguments use the same colors.
 syn region inkoBlockTypeParameters start="!(" end=")"
-  \ contains=TOP,inkoKeywordArgument nextgroup=inkoBlockArguments keepend
+  \ contains=TOP,inkoKeywordArgument nextgroup=inkoBlockArguments keepend contained
 
 syn region inkoBlockArguments start="(" end=")"
-  \ contains=TOP,inkoKeywordArgument keepend
+  \ contains=TOP,inkoKeywordArgument keepend contained
+
+syn cluster inkoBlockSignature
+  \ contains=inkoBlockTypeParameters,inkoBlockArguments
 
 " Literals
 syn match inkoDelimiters "[\[\]{}.,()=_]"
