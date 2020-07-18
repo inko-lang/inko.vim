@@ -9,60 +9,56 @@ let b:current_syntax = "inko"
 set iskeyword+=?
 
 syn keyword inkoKeyword object import trait let mut return self throw else
-syn keyword inkoKeyword impl for as when static match
-syn keyword inkoSpecialConstant Self Dynamic
-
-" Variables/identifiers
-syn match inkoInstanceVariable "@\%(\h\|[^\x00-\x7F]\)\%(\w\|[^\x00-\x7F]\)*"
-syn match inkoIdentifier "\<[_[:lower:]][_[:alnum:]]*[?!=]\="
-syn match inkoConstant "\%(\%(^\|[^.]\)\.\s*\)\@<!\<\u\%(\w\|[^\x00-\x7F]\)*\>\%(\s*(\)\@!"
-syn match inkoKeywordArgument "\(let \|let mut \|trait \)\@<!\%(\h\|[^\x00-\x7F]\)\%(\w\|[^\x00-\x7F]\)*:[^:]"
+syn keyword inkoKeyword impl for as when static match do lambda
+syn keyword inkoSpecialConstant Self Never
 
 " Numbers
 syn match inkoNumber "\d\+\([\._]\d\+\)*\([eE]+\d\+\)\?"
 syn match inkoHex "0[xX][0-9a-fA-F]\+"
 
-" Strings
-syn region inkoDoubleString matchgroup=inkoDoubleStringDelimiter start="\"" end="\"" skip="\\\\\|\\\""
-syn region inkoSingleString matchgroup=inkoSingleStringDelimiter start="'" end="'" skip="\\\\\|\\\'"
+" Variables/identifiers
+syn match inkoInstanceVariable "@[_a-zA-Z0-9]\+"
+syn match inkoIdentifier "_\?[a-z][_a-zA-Z0-9]\+?\?" nextgroup=@inkoArguments
 
-" Method, closure, and lambda definitions
+" Constants
+syn match inkoConstant "_\?[A-Z][_a-zA-Z0-9]*" nextgroup=inkoTypeArguments
+syn region inkoTypeArguments start="!(" end=")"
+    \ contains=inkoConstant,inkoSpecialConstant,inkoTypeArguments,inkoComma
+    \ contained
+
+" Methods
 syn keyword inkoKeyword def nextgroup=inkoMethodName skipwhite skipempty
-syn match inkoMethodName "[^( -!{]\+" contained nextgroup=@inkoBlockSignature
+syn match inkoMethodName "[^( -!{]\+" contained
 
-syn keyword inkoKeyword do nextgroup=@inkoBlockSignature skipwhite skipempty
-syn keyword inkoKeyword lambda nextgroup=@inkoBlockSignature skipwhite skipempty
+" Message (keyword) arguments.
+syn cluster inkoArguments contains=inkoTypeArguments,inkoMessageArguments
+syn region inkoMessageArguments start="(" end=")" contained contains=TOP
+syn match inkoKeywordArgument "_\?[a-z][_a-zA-Z0-9]\+:" contained
+    \ containedin=inkoMessageArguments
 
-" Don't highlight arguments such as `foo: Integer` in method definitions. This
-" ensures that both required and optional arguments use the same colors.
-syn region inkoBlockTypeParameters start="!(" end=")"
-  \ contains=TOP,inkoKeywordArgument nextgroup=inkoBlockArguments keepend contained
-
-syn region inkoBlockArguments start="(" end=")"
-  \ contains=TOP,inkoKeywordArgument keepend contained
-
-syn cluster inkoBlockSignature
-  \ contains=inkoBlockTypeParameters,inkoBlockArguments
-
-" Literals
-syn match inkoDelimiters "[\[\]{}.,()=_]"
-syn match inkoOperators "[-+\*^%!/<>&|?~]"
+" Strings
+syn region inkoDoubleString matchgroup=inkoDoubleStringDelimiter
+    \ start="\"" end="\"" skip="\\\\\|\\\""
+syn region inkoSingleString matchgroup=inkoSingleStringDelimiter
+    \ start="'" end="'" skip="\\\\\|\\\'"
 
 " Generic characters
+syn match inkoDelimiters "[\[\]{}.,=_]"
+syn match inkoOperators "[-+\*^%!/<>&|~]"
 syn match inkoNamespaceSeparator "::"
-syn match inkoDot "\."
 syn match inkoThrows "!!"
 syn match inkoReturns "->"
 syn match inkoTry 'try!\?'
 
 " Basic Markdown support for doc comments.
-syn region inkoCommentCode start="#\s\{5\}\zs" end="$" contained oneline keepend contains=TOP oneline
+syn region inkoCommentCode start="#\s\{5\}\zs" end="$" contained oneline
+syn region inkoCommentInlineCode start="`" end="`" oneline contained
 syn region inkoCommentBold start="\*\*" end="\*\*" contained oneline
 syn region inkoCommentItalic start="_" end="_" contained keepend oneline
 syn region inkoCommentTitle start="#\s\+\zs#\+" end="$" contained oneline
 syn region inkoCommentListDelimiter start="#\s*\zs\(\*\|\d.\)" end="\s" contained oneline
-syn region inkoCommentInlineUrl matchgroup=inkoCommentInlineUrlDelimiter start="<" end=">" contained keepend
-syn region inkoCommentInlineCode start="`" end="`" keepend oneline contained contains=TOP
+syn region inkoCommentInlineUrl matchgroup=inkoCommentInlineUrlDelimiter
+    \ start="<" end=">" contained keepend
 
 syn cluster inkoCommentMarkup contains=inkoCommentCode,inkoCommentBold
 syn cluster inkoCommentMarkup add=inkoCommentItalic,inkoCommentTitle
@@ -72,7 +68,8 @@ syn cluster inkoCommentMarkup add=inkoCommentInlineCode
 " Comments
 syn region inkoComment start="#" end="$" contains=@Spell,@inkoCommentMarkup keepend
 
-hi def link inkoDot Normal
+hi def link inkoDelimiters Normal
+hi def link inkoOperators Normal
 hi def link inkoNamespaceSeparator Normal
 hi def link inkoKeyword Keyword
 hi def link inkoComment Comment
