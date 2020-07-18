@@ -23,7 +23,8 @@ syn match inkoIdentifier "_\?[a-z][_a-zA-Z0-9]\+?\?" nextgroup=@inkoArguments
 " Constants
 syn match inkoConstant "_\?[A-Z][_a-zA-Z0-9]*" nextgroup=inkoTypeArguments
 syn region inkoTypeArguments start="!(" end=")"
-    \ contains=inkoConstant,inkoSpecialConstant,inkoTypeArguments,inkoComma
+    \ contains=inkoConstant,inkoSpecialConstant,inkoTypeArguments,inkoComma,
+    \          inkoThrows,inkoReturns,inkoKeyword
     \ contained
 
 " Methods
