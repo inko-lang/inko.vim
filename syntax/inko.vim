@@ -6,10 +6,10 @@ end
 
 let b:current_syntax = "inko"
 
-set iskeyword+=?
+set iskeyword+=?,!
 
 syn keyword inkoKeyword object import trait let mut return self throw else
-syn keyword inkoKeyword impl for as when static match do lambda local
+syn keyword inkoKeyword impl for as when static match do lambda local try try!
 syn keyword inkoSpecialConstant Self Never
 
 " Numbers
@@ -49,7 +49,6 @@ syn match inkoOperators "[-+\*^%!/<>&|~]"
 syn match inkoNamespaceSeparator "::"
 syn match inkoThrows "!!"
 syn match inkoReturns "->"
-syn match inkoTry 'try!\?'
 
 " Basic Markdown support for doc comments.
 syn region inkoCommentCode start="#\s\{5\}\zs" end="$" contained oneline
@@ -97,4 +96,3 @@ hi def link inkoCommentListDelimiter Keyword
 hi def link inkoCommentInlineUrl Comment
 hi def link inkoCommentInlineCode inkoCommentCode
 hi def link inkoCommentInlineUrlDelimiter Comment
-hi def link inkoTry Keyword
