@@ -60,10 +60,13 @@ syn region inkoCommentListDelimiter start="#\s*\zs\(\*\|\d.\)" end="\s" containe
 syn region inkoCommentInlineUrl matchgroup=inkoCommentInlineUrlDelimiter
     \ start="<" end=">" contained keepend
 
+syn keyword inkoTodo TODO FIXME THINK HACK contained
+
 syn cluster inkoCommentMarkup contains=inkoCommentCode,inkoCommentBold
 syn cluster inkoCommentMarkup add=inkoCommentItalic,inkoCommentTitle
 syn cluster inkoCommentMarkup add=inkoCommentListDelimiter,inkoCommentInlineUrl
 syn cluster inkoCommentMarkup add=inkoCommentInlineCode
+syn cluster inkoCommentMarkup add=inkoTodo
 
 " Comments
 syn region inkoComment start="#" end="$" contains=@Spell,@inkoCommentMarkup keepend
@@ -96,3 +99,4 @@ hi def link inkoCommentListDelimiter Keyword
 hi def link inkoCommentInlineUrl Comment
 hi def link inkoCommentInlineCode inkoCommentCode
 hi def link inkoCommentInlineUrlDelimiter Comment
+hi def link inkoTodo Todo
