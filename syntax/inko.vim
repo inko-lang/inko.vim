@@ -71,9 +71,9 @@ syn cluster inkoCommentMarkup add=inkoTodo
 " Comments
 syn region inkoComment start="#" end="$" contains=@Spell,@inkoCommentMarkup keepend
 
-hi def link inkoDelimiters Normal
-hi def link inkoOperators Normal
-hi def link inkoNamespaceSeparator Normal
+hi def link inkoDelimiters Operator
+hi def link inkoOperators Operator
+hi def link inkoNamespaceSeparator Operator
 hi def link inkoKeyword Keyword
 hi def link inkoComment Comment
 hi def link inkoModuleDocComment Comment
@@ -88,7 +88,7 @@ hi def link inkoMethodName Function
 hi def link inkoIdentifier Identifier
 hi def link inkoThrows Keyword
 hi def link inkoReturns Keyword
-hi def link inkoKeywordArgument Normal
+hi def link inkoKeywordArgument Identifier
 hi def link inkoConstant Constant
 hi def link inkoSpecialConstant Keyword
 hi def link inkoCommentCode Comment
