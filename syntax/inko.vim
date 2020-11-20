@@ -10,6 +10,7 @@ set iskeyword+=?,!
 
 syn keyword inkoKeyword object import trait let mut return self throw else
 syn keyword inkoKeyword impl for as when static match do lambda local try try!
+syn keyword inkoKeyword yield
 syn keyword inkoSpecialConstant Self Never
 
 " Numbers
@@ -49,6 +50,7 @@ syn match inkoOperators "[-+\*^%!/<>&|~]"
 syn match inkoNamespaceSeparator "::"
 syn match inkoThrows "!!"
 syn match inkoReturns "->"
+syn match inkoYields "=>"
 
 " Basic Markdown support for doc comments.
 syn region inkoCommentCode start="#\s\{5\}\zs" end="$" contained oneline
@@ -88,6 +90,7 @@ hi def link inkoMethodName Function
 hi def link inkoIdentifier Identifier
 hi def link inkoThrows Keyword
 hi def link inkoReturns Keyword
+hi def link inkoYields Keyword
 hi def link inkoKeywordArgument Identifier
 hi def link inkoConstant Constant
 hi def link inkoSpecialConstant Keyword
