@@ -41,8 +41,15 @@ syn match inkoKeywordArgument "_\?[a-z][_a-zA-Z0-9]*:" contained
 " Strings
 syn region inkoDoubleString matchgroup=inkoDoubleStringDelimiter
     \ start="\"" end="\"" skip="\\\\\|\\\""
+
 syn region inkoSingleString matchgroup=inkoSingleStringDelimiter
-    \ start="'" end="'" skip="\\\\\|\\\'"
+    \ start="'" end="'" skip="\\\\\|\\'"
+
+syn region inkoTemplateString matchgroup=inkoTemplateStringDelimiter
+    \ start="`" end="`" skip="\\\\\|\\`" contains=inkoTemplateEmbed
+
+syn region inkoTemplateEmbed matchgroup=inkoTemplateEmbedDelimiter
+    \ start="{" end="}" skip="\\\\\|\\{" contains=TOP contained
 
 " Generic characters
 syn match inkoDelimiters "[\[\]{}.,=_]"
@@ -85,6 +92,11 @@ hi def link inkoHex Number
 hi def link inkoString String
 hi def link inkoDoubleString inkoString
 hi def link inkoSingleString inkoString
+hi def link inkoTemplateString inkoString
+hi def link inkoSingleStringDelimiter inkoString
+hi def link inkoDoubleStringDelimiter inkoString
+hi def link inkoTemplateStringDelimiter inkoString
+hi def link inkoTemplateEmbedDelimiter Delimiter
 hi def link inkoInstanceVariable Identifier
 hi def link inkoMethodName Function
 hi def link inkoIdentifier Identifier
