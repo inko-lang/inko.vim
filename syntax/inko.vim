@@ -11,7 +11,7 @@ set iskeyword+=?,!
 syn keyword inkoKeyword object import trait let mut return self throw else
 syn keyword inkoKeyword impl for as when static match do lambda local try try!
 syn keyword inkoKeyword yield
-syn keyword inkoSpecialConstant Self Never
+syn keyword inkoSpecialConstant Self Never Any
 
 " Numbers
 syn match inkoNumber "\d\+\([\._]\d\+\)*\([eE]+\d\+\)\?"
