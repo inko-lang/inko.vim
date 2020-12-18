@@ -8,11 +8,6 @@ let b:current_syntax = "inko"
 
 set iskeyword+=?,!
 
-syn keyword inkoKeyword object import trait let mut return self throw else
-syn keyword inkoKeyword impl for as when static match do lambda local try try!
-syn keyword inkoKeyword yield
-syn keyword inkoSpecialConstant Self Never Any
-
 " Numbers
 syn match inkoNumber "\d\+\([\._]\d\+\)*\([eE]+\d\+\)\?"
 syn match inkoHex "0[xX][0-9a-fA-F]\+"
@@ -22,6 +17,8 @@ syn match inkoInstanceVariable "@[_a-zA-Z0-9]\+"
 syn match inkoIdentifier "_\?[a-z][_a-zA-Z0-9]\+?\?" nextgroup=@inkoArguments
 
 " Constants
+syn keyword inkoSpecialConstant Self Never Any
+
 syn match inkoConstant "_\?[A-Z][_a-zA-Z0-9]*" nextgroup=inkoTypeArguments
 syn region inkoTypeArguments start="!(" end=")"
     \ contains=inkoConstant,inkoSpecialConstant,inkoTypeArguments,inkoComma,
@@ -58,6 +55,14 @@ syn match inkoNamespaceSeparator "::"
 syn match inkoThrows "!!"
 syn match inkoReturns "->"
 syn match inkoYields "=>"
+
+" Keywords
+"
+" We use `syn match` as keywords are also valid method names, provided an
+" explicit receiver is used (e.g. `self.import` is valid).
+syn match inkoKeyword '\.\@<!\<\(let\|else\|object\|import\|trait\|mut\|return\)\>'
+syn match inkoKeyword '\.\@<!\<\(self\|throw\|impl\|for\|as\|when\|static\|match\)\>'
+syn match inkoKeyword '\.\@<!\<\(do\|lambda\|local\|try!\?\|yield\)\>'
 
 " Basic Markdown support for doc comments.
 syn region inkoCommentCode start="#\s\{5\}\zs" end="$" contained oneline
