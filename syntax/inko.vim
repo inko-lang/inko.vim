@@ -60,7 +60,7 @@ syn match inkoYields "=>"
 "
 " We use `syn match` as keywords are also valid method names, provided an
 " explicit receiver is used (e.g. `self.import` is valid).
-syn match inkoKeyword '\.\@<!\<\(let\|else\|object\|import\|trait\|mut\|return\)\>'
+syn match inkoKeyword '\.\@<!\<\(let\|else\|class\|import\|trait\|mut\|return\)\>'
 syn match inkoKeyword '\.\@<!\<\(self\|throw\|impl\|for\|as\|when\|static\|match\)\>'
 syn match inkoKeyword '\.\@<!\<\(do\|lambda\|local\|try!\?\|yield\)\>'
 
