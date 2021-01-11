@@ -62,7 +62,7 @@ syn match inkoYields "=>"
 " explicit receiver is used (e.g. `self.import` is valid).
 syn match inkoKeyword '\.\@<!\<\(let\|else\|class\|import\|trait\|mut\|return\)\>'
 syn match inkoKeyword '\.\@<!\<\(self\|throw\|impl\|for\|as\|when\|static\|match\)\>'
-syn match inkoKeyword '\.\@<!\<\(do\|fn\|local\|try!\?\|yield\)\>'
+syn match inkoKeyword '\.\@<!\<\(do\|fn\|local\|try!\?\|yield\|extern\)\>'
 
 " Basic Markdown support for doc comments.
 syn region inkoCommentCode start="#\s\{5\}\zs" end="$" contained oneline
