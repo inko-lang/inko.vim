@@ -6,7 +6,7 @@ end
 
 let b:current_syntax = "inko"
 
-set iskeyword+=?,!
+set iskeyword+=?
 
 " Numbers
 syn match inkoNumber "\d\+\([\._]\d\+\)*\([eE]+\d\+\)\?"
