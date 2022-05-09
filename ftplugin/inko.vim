@@ -15,8 +15,10 @@ augroup inko.vim
     setlocal commentstring=#\ %s
     setlocal formatoptions=jcroql
 
-    setlocal foldmethod=expr
-    setlocal foldexpr=inko#Fold()
+    if get(g:, "inko_folding", 0)
+      setlocal foldmethod=expr
+      setlocal foldexpr=inko#Fold()
+    endif
 augroup END
 
 let &cpo = s:save_cpo
