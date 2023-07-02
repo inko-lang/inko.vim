@@ -28,7 +28,7 @@ syn match inkoMethodName "[^( -!{]\+" contained
 " Message (keyword) arguments.
 syn cluster inkoArguments contains=inkoMessageArguments
 syn region inkoMessageArguments start="(" end=")" contained contains=TOP
-syn match inkoKeywordArgument "_\?[a-z][_a-zA-Z0-9]*:" contained
+syn match inkoKeywordArgument "_\?[a-z][_a-zA-Z0-9]*:[^:]" contained
     \ containedin=inkoMessageArguments
 
 " Strings
