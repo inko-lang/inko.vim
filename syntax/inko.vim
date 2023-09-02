@@ -8,6 +8,8 @@ let b:current_syntax = "inko"
 
 set iskeyword+=?
 
+syn sync minlines=200
+
 " Numbers
 syn match inkoNumber "\d\+\([\._]\d\+\)*\([eE]+\d\+\)\?u\?"
 syn match inkoHex "0[xX][0-9a-fA-F]\+"
