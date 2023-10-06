@@ -1,10 +1,8 @@
 if exists("b:did_ftplugin")
     finish
 endif
-let b:did_ftplugin = 1
 
-let s:save_cpo = &cpo
-set cpo&vim
+let b:did_ftplugin = 1
 
 augroup inko.vim
     autocmd!
@@ -22,6 +20,3 @@ augroup inko.vim
 augroup END
 
 setlocal sw=2 sts=2 ts=2 expandtab
-
-let &cpo = s:save_cpo
-unlet s:save_cpo
