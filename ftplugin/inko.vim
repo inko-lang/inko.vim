@@ -21,5 +21,7 @@ augroup inko.vim
     endif
 augroup END
 
+setlocal sw=2 sts=2 ts=2 expandtab
+
 let &cpo = s:save_cpo
 unlet s:save_cpo
