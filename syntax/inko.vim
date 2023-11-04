@@ -47,7 +47,6 @@ syn region inkoStringEmbed matchgroup=inkoStringEmbedDelimiter
 syn match inkoDelimiters "[\[\]{}.,=_]"
 syn match inkoOperators "[-+\*^%!/<>&|~]"
 syn match inkoNamespaceSeparator "::"
-syn match inkoThrows "!!"
 syn match inkoReturns "->"
 
 " Keywords
@@ -99,7 +98,6 @@ hi def link inkoStringEmbedDelimiter Delimiter
 hi def link inkoInstanceVariable Identifier
 hi def link inkoMethodName Function
 hi def link inkoIdentifier Identifier
-hi def link inkoThrows Keyword
 hi def link inkoReturns Keyword
 hi def link inkoYields Keyword
 hi def link inkoKeywordArgument Identifier
