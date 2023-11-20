@@ -59,25 +59,9 @@ syn match inkoKeyword '\.\@<!\<\(try!\?\|builtin\|extern\|if\|async\|nil\)\>'
 syn match inkoKeyword '\.\@<!\<\(move\|ref\|while\|loop\|next\|break\|and\|or\)\>'
 syn match inkoKeyword '\.\@<!\<\(pub\|true\|false\|case\|enum\|uni\|recover\)\>'
 
-" Basic Markdown support for doc comments.
-syn region inkoCommentCode start="#\s\{5\}\zs" end="$" contained oneline
-syn region inkoCommentInlineCode start="`" end="`" oneline contained
-syn region inkoCommentBold start="\*\*" end="\*\*" contained oneline
-syn region inkoCommentItalic start="_" end="_" contained keepend oneline
-syn region inkoCommentTitle start="#\s\+\zs#\+" end="$" contained oneline
-syn region inkoCommentListDelimiter start="#\s*\zs\(\*\|\d.\)" end="\s" contained oneline
-syn region inkoCommentInlineUrl matchgroup=inkoCommentInlineUrlDelimiter
-    \ start="<" end=">" contained keepend
-
-syn keyword inkoTodo TODO FIXME THINK HACK contained
-
-syn cluster inkoCommentMarkup contains=inkoCommentCode,inkoCommentBold
-syn cluster inkoCommentMarkup add=inkoCommentItalic,inkoCommentTitle
-syn cluster inkoCommentMarkup add=inkoCommentListDelimiter,inkoCommentInlineUrl
-syn cluster inkoCommentMarkup add=inkoCommentInlineCode
-syn cluster inkoCommentMarkup add=inkoTodo
-
 " Comments
+syn keyword inkoTodo TODO FIXME THINK HACK contained
+syn cluster inkoCommentMarkup contains=inkoTodo
 syn region inkoComment start="#" end="$" contains=@Spell,@inkoCommentMarkup keepend
 
 hi def link inkoDelimiters Operator
@@ -103,12 +87,4 @@ hi def link inkoYields Keyword
 hi def link inkoKeywordArgument Identifier
 hi def link inkoConstant Constant
 hi def link inkoSpecialConstant Keyword
-hi def link inkoCommentCode Comment
-hi def link inkoCommentBold Comment
-hi def link inkoCommentItalic Comment
-hi def link inkoCommentTitle Comment
-hi def link inkoCommentListDelimiter Keyword
-hi def link inkoCommentInlineUrl Comment
-hi def link inkoCommentInlineCode inkoCommentCode
-hi def link inkoCommentInlineUrlDelimiter Comment
 hi def link inkoTodo Todo
