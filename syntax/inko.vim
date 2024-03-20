@@ -34,14 +34,19 @@ syn match inkoKeywordArgument "_\?[a-z][_a-zA-Z0-9]*:[^:]" contained
     \ containedin=inkoMessageArguments
 
 " Strings
+syn match inkoStringEscape '\\\(n\|r\|t\|e\|\'\|"\|$\|0\|\\\)' contained
+syn match inkoStringUnicodeEscape '\\u{[a-zA-Z0-9]\+}' contained
+
 syn region inkoDoubleString matchgroup=inkoDoubleStringDelimiter
-    \ start="\"" end="\"" skip="\\\\\|\\\"" contains=inkoStringEmbed
+    \ start="\"" end="\"" skip="\\\\\|\\\""
+    \ contains=inkoStringEmbed,inkoStringEscape,inkoStringUnicodeEscape
 
 syn region inkoSingleString matchgroup=inkoSingleStringDelimiter
     \ start="'" end="'" skip="\\\\\|\\'"
+    \ contains=inkoStringEmbed,inkoStringEscape,inkoStringUnicodeEscape
 
 syn region inkoStringEmbed matchgroup=inkoStringEmbedDelimiter
-    \ start="{" end="}" skip="\\\\\|\\{" contains=TOP contained
+    \ start="\\\@<!${" end="}" skip="\\\\\|\\${" contains=TOP contained
 
 " Generic characters
 syn match inkoDelimiters "[\[\]{}.,=_]"
@@ -88,3 +93,5 @@ hi def link inkoKeywordArgument Identifier
 hi def link inkoConstant Constant
 hi def link inkoSpecialConstant Keyword
 hi def link inkoTodo Todo
+hi def link inkoStringEscape Special
+hi def link inkoStringUnicodeEscape Special
