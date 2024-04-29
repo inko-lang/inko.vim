@@ -20,7 +20,7 @@ syn match inkoIdentifier "_\?[a-z][_a-zA-Z0-9]\+?\?" nextgroup=@inkoArguments
 
 " Constants
 syn keyword inkoSpecialConstant Self Never Any
-syn match inkoConstant "_\?[A-Z][_a-zA-Z0-9]*"
+syn match inkoConstant "_\?[A-Z][_a-zA-Z0-9]*" nextgroup=@inkoArguments
 
 " Methods
 syn match inkoKeyword '\<fn\s\+\(pub\s\+\)\?\(\(move\|async\(\s\+mut\)\?\|static\|mut\|extern\)\>\)\?'
