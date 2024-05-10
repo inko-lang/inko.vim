@@ -5,7 +5,7 @@ let b:did_indent = 1
 
 setlocal nolisp
 setlocal autoindent
-setlocal indentkeys=0{,0},0#,!^F,o,O,0[,0],0(,0),.
+setlocal indentkeys=0{,0},0#,!^F,o,O,0[,0],0(,0),0.
 setlocal indentexpr=InkoIndent(v:lnum)
 
 if exists("*InkoIndent")
