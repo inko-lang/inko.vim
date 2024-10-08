@@ -23,7 +23,7 @@ syn keyword inkoSpecialConstant Self Never Any
 syn match inkoConstant "_\?[A-Z][_a-zA-Z0-9]*" nextgroup=@inkoArguments
 
 " Methods
-syn match inkoKeyword '\<fn\s\+\(pub\s\+\)\?\(\(move\|async\(\s\+mut\)\?\|static\|mut\|extern\)\>\)\?'
+syn match inkoKeyword '\<fn\s\+\(pub\s\+\)\?\(inline\s\+\)\?\(\(move\|async\(\s\+mut\)\?\|static\|mut\|extern\)\>\)\?'
     \ nextgroup=inkoMethodName skipempty skipwhite
 syn match inkoMethodName "[^( -!{]\+" contained
 
