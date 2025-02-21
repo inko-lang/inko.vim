@@ -63,7 +63,7 @@ syn match inkoKeyword '\.\@<!\<\(self\|throw\|impl\|for\|as\|static\|match\)\>'
 syn match inkoKeyword '\.\@<!\<\(try\|builtin\|extern\|if\|async\|nil\)\>'
 syn match inkoKeyword '\.\@<!\<\(move\|ref\|while\|loop\|next\|break\|and\|or\)\>'
 syn match inkoKeyword '\.\@<!\<\(pub\|true\|false\|case\|enum\|uni\|recover\)\>'
-syn match inkoKeyword '\.\@<!\<\(inline\|copy\|type\)\>'
+syn match inkoKeyword '\.\@<!\<\(inline\|copy\|type\|in\)\>'
 
 " Comments
 syn keyword inkoTodo TODO FIXME THINK HACK contained
