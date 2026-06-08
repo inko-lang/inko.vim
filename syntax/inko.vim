@@ -12,7 +12,8 @@ syn sync minlines=200
 
 " Numbers
 syn match inkoNumber "\d\+\([\._]\d\+\)*\([eE]+\d\+\)\?u\?"
-syn match inkoHex "0[xX][0-9a-fA-F]\+"
+syn match inkoHex "0[xX][0-9a-fA-F_]\+"
+syn match inkoBin "0b[0-1_]\+"
 
 " Variables/identifiers
 syn match inkoInstanceVariable "@[_a-zA-Z0-9]\+"
@@ -79,6 +80,7 @@ hi def link inkoModuleDocComment Comment
 hi def link inkoDocComment Comment
 hi def link inkoNumber Number
 hi def link inkoHex Number
+hi def link inkoBin Number
 hi def link inkoString String
 hi def link inkoDoubleString inkoString
 hi def link inkoSingleString inkoString
